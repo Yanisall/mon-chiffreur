@@ -1,0 +1,309 @@
+/* ========================================================= */
+/* RÉGLAGES RAPIDES */
+/* C'est ici qu'on peut modifier facilement le style général */
+/* ========================================================= */
+
+:root {
+    /* Couleur principale du site : rose/violet */
+    --couleur-principale: #ff4ecd;
+
+    /* Couleur secondaire : bleu clair */
+    --couleur-secondaire: #5ee7ff;
+
+    /* Couleur du texte principal */
+    --couleur-texte: white;
+
+    /* Couleur du texte secondaire */
+    --couleur-texte-secondaire: #e7e7ff;
+
+    /* Couleur de fond principale */
+    --fond-principal: #0f1020;
+
+    /* Couleur de fond secondaire */
+    --fond-secondaire: #17172f;
+
+    /* Couleur de fond des zones de texte */
+    --fond-zone-texte: rgba(255, 255, 255, 0.08);
+
+    /* Arrondi des zones de texte */
+    --arrondi-zone: 18px;
+
+    /* Arrondi des boutons */
+    --arrondi-bouton: 999px;
+
+    /* Largeur maximale du contenu */
+    --largeur-max: 650px;
+}
+
+
+/* ========================================================= */
+/* RÉINITIALISATION DE BASE */
+/* Ça évite les marges automatiques du navigateur */
+/* ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ========================================================= */
+/* STYLE GÉNÉRAL DE LA PAGE */
+/* ========================================================= */
+
+body {
+    /* La page prend au minimum toute la hauteur de l'écran */
+    min-height: 100vh;
+
+    /* Police utilisée sur tout le site */
+    font-family: Arial, Helvetica, sans-serif;
+
+    /* Couleur du texte par défaut */
+    color: var(--couleur-texte);
+
+    /* On centre tout le contenu horizontalement et verticalement */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* Espace autour du contenu pour éviter qu'il colle aux bords */
+    padding: 30px;
+
+    /* Fond stylé avec plusieurs dégradés superposés */
+    background:
+        /* Tache rose en haut à gauche */
+        radial-gradient(circle at top left, rgba(255, 0, 120, 0.35), transparent 35%),
+
+        /* Tache bleue en bas à droite */
+        radial-gradient(circle at bottom right, rgba(0, 180, 255, 0.35), transparent 35%),
+
+        /* Dégradé sombre général */
+        linear-gradient(135deg, var(--fond-principal), var(--fond-secondaire) 45%, #101020);
+}
+
+
+/* ========================================================= */
+/* TITRE PRINCIPAL */
+/* ========================================================= */
+
+h1 {
+    /* Taille du titre */
+    font-size: 3rem;
+
+    /* Espace sous le titre */
+    margin-bottom: 30px;
+
+    /* Centre le texte */
+    text-align: center;
+
+    /* Petit espacement entre les lettres */
+    letter-spacing: 1px;
+
+    /* Dégradé appliqué au texte */
+    background: linear-gradient(90deg, var(--couleur-principale), var(--couleur-secondaire));
+
+    /* Permet d'appliquer le dégradé uniquement sur les lettres */
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    /* Rend la couleur normale transparente pour voir le dégradé */
+    color: transparent;
+
+    /* Légère lumière autour du titre */
+    text-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+}
+
+
+/* ========================================================= */
+/* PARAGRAPHES / LABELS */
+/* Par exemple : "Message à chiffrer", "Résultat", etc. */
+/* ========================================================= */
+
+p {
+    /* Même largeur que les zones de texte */
+    width: 100%;
+    max-width: var(--largeur-max);
+
+    /* Petit espace sous le paragraphe */
+    margin-bottom: 8px;
+
+    /* Taille du texte */
+    font-size: 1.1rem;
+
+    /* Texte en gras */
+    font-weight: bold;
+
+    /* Couleur légèrement moins forte que le blanc */
+    color: var(--couleur-texte-secondaire);
+}
+
+
+/* ========================================================= */
+/* ZONES DE TEXTE */
+/* Cela concerne les textarea où on écrit le message et le résultat */
+/* ========================================================= */
+
+textarea {
+    /* La zone prend toute la largeur disponible */
+    width: 100%;
+
+    /* Mais elle ne dépasse pas cette largeur */
+    max-width: var(--largeur-max);
+
+    /* Hauteur minimale */
+    min-height: 130px;
+
+    /* L'utilisateur peut agrandir la zone verticalement */
+    resize: vertical;
+
+    /* Espace intérieur */
+    padding: 18px;
+
+    /* Bordure discrète */
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    /* Coins arrondis */
+    border-radius: var(--arrondi-zone);
+
+    /* Enlève le contour bleu par défaut du navigateur */
+    outline: none;
+
+    /* Taille du texte écrit dans la zone */
+    font-size: 1rem;
+
+    /* Espace entre les lignes */
+    line-height: 1.5;
+
+    /* Couleur du texte dans la zone */
+    color: var(--couleur-texte);
+
+    /* Fond semi-transparent */
+    background: var(--fond-zone-texte);
+
+    /* Effet de flou derrière la zone */
+    backdrop-filter: blur(12px);
+
+    /* Ombre autour de la zone */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+
+    /* Animation douce quand on clique dessus */
+    transition: 0.25s ease;
+}
+
+
+/* ========================================================= */
+/* EFFET QUAND ON CLIQUE DANS UNE ZONE DE TEXTE */
+/* ========================================================= */
+
+textarea:focus {
+    /* La bordure devient bleue */
+    border-color: var(--couleur-secondaire);
+
+    /* Lumière bleue autour de la zone */
+    box-shadow:
+        0 0 0 3px rgba(94, 231, 255, 0.15),
+        0 15px 35px rgba(0, 0, 0, 0.45);
+}
+
+
+/* ========================================================= */
+/* BOUTONS */
+/* Cela concerne les boutons "Chiffrer", "Déchiffrer", etc. */
+/* ========================================================= */
+
+button {
+    /* Espace autour des boutons */
+    margin: 18px 8px;
+
+    /* Taille intérieure du bouton */
+    padding: 14px 28px;
+
+    /* Enlève la bordure par défaut */
+    border: none;
+
+    /* Boutons très arrondis */
+    border-radius: var(--arrondi-bouton);
+
+    /* Curseur en forme de main */
+    cursor: pointer;
+
+    /* Taille du texte du bouton */
+    font-size: 1rem;
+
+    /* Texte en gras */
+    font-weight: bold;
+
+    /* Couleur du texte */
+    color: white;
+
+    /* Dégradé du bouton */
+    background: linear-gradient(135deg, var(--couleur-principale), var(--couleur-secondaire));
+
+    /* Ombre lumineuse */
+    box-shadow: 0 10px 25px rgba(94, 231, 255, 0.25);
+
+    /* Animation quand on passe la souris */
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+
+/* ========================================================= */
+/* EFFET QUAND LA SOURIS PASSE SUR UN BOUTON */
+/* ========================================================= */
+
+button:hover {
+    /* Le bouton monte légèrement */
+    transform: translateY(-3px);
+
+    /* L'ombre devient plus visible */
+    box-shadow: 0 15px 35px rgba(255, 78, 205, 0.35);
+}
+
+
+/* ========================================================= */
+/* EFFET AU CLIC SUR LE BOUTON */
+/* ========================================================= */
+
+button:active {
+    /* Le bouton revient à sa place */
+    transform: translateY(0);
+
+    /* Il devient légèrement transparent au clic */
+    opacity: 0.85;
+}
+
+
+/* ========================================================= */
+/* ADAPTATION POUR TÉLÉPHONE */
+/* Cette partie s'applique quand l'écran est petit */
+/* ========================================================= */
+
+@media (max-width: 600px) {
+    body {
+        /* Moins d'espace sur téléphone */
+        padding: 20px;
+    }
+
+    h1 {
+        /* Titre plus petit sur téléphone */
+        font-size: 2.2rem;
+    }
+
+    textarea {
+        /* Zones de texte un peu moins hautes */
+        min-height: 110px;
+    }
+
+    button {
+        /* Les boutons prennent toute la largeur */
+        width: 100%;
+
+        /* Moins d'espace autour */
+        margin: 10px 0;
+    }
+}
